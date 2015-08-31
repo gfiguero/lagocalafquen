@@ -51,6 +51,14 @@
                         </dl>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% for photo in entity.frontpagephotos %}
+                            {% set image = 'uploads/frontpage_photos/' ~ photo.photopath %}
+                            <img src="{{ asset(image) | imagine_filter('frontpage_edit') }}" alt="..." class="img-responsive img-thumbnail">
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             <!-- /.col-lg-12 -->
         </div>

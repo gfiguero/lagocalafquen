@@ -46,6 +46,7 @@ class MemberController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -153,7 +154,7 @@ class MemberController extends Controller
 
         $form->add('actions', 'form_actions', [
             'buttons' => [
-                'submit' => ['type' => 'submit', 'options' => ['label' => 'save', 'attr' => array('icon' => 'save', 'class' => 'btn-primary', 'data-toggle' => 'modal', 'data-target' => '#loading')]],
+                'submit' => ['type' => 'submit', 'options' => ['label' => 'save', 'attr' => array('icon' => 'save', 'class' => 'btn-primary')]],
             ]
         ]);
 
@@ -177,6 +178,7 @@ class MemberController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->upload();
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'Member has been updated.' );
             return $this->redirect($this->generateUrl('member'));

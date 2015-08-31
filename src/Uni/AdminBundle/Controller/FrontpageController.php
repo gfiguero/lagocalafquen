@@ -2,9 +2,9 @@
 
 namespace Uni\AdminBundle\Controller;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Uni\AdminBundle\Entity\Frontpage;
 use Uni\AdminBundle\Form\FrontpageType;
@@ -48,6 +48,12 @@ class FrontpageController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $photos = $entity->getFrontpagePhotos();
+            foreach ($photos as $photo) {
+                $photo->upload();
+                $photo->setPhotoFrontpage($entity);
+                $em->persist($photo);
+            }
             $em->persist($entity);
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'Frontpage has been created.' );    
@@ -154,7 +160,7 @@ class FrontpageController extends Controller
 
         $form->add('actions', 'form_actions', [
             'buttons' => [
-                'submit' => ['type' => 'submit', 'options' => ['label' => 'save', 'attr' => array('icon' => 'save', 'class' => 'btn-primary', 'data-toggle' => 'modal', 'data-target' => '#loading')]],
+                'submit' => ['type' => 'submit', 'options' => ['label' => 'save', 'attr' => array('icon' => 'save', 'class' => 'btn-primary')]],
             ]
         ]);
 

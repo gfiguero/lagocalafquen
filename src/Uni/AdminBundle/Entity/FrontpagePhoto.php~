@@ -108,4 +108,49 @@ class FrontpagePhoto
     {
         return $this->photo_frontpage;
     }
+
+    public function upload()
+    {
+        if (null === $this->getPhotoFile()) {
+            return;
+        }
+
+        $this->getPhotoFile()->move(
+            $this->getUploadRootDir(),
+            $this->getPhotoFile()->getClientOriginalName()
+        );
+
+        $this->photo_path = $this->getPhotoFile()->getClientOriginalName();
+
+        $this->photo_file = null;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->photo_path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->photo_path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->photo_path
+            ? null
+            : $this->getUploadDir().'/'.$this->photo_path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return '/uploads/frontpage_photos';
+    }
+
 }

@@ -20,21 +20,30 @@ class FrontpageType extends AbstractType
             ))
             ->add('frontpage_subtitle', null, array(
                 'label' =>  'frontpage_subtitle',
+                'required' => false,
             ))
             ->add('frontpage_email', null, array(
                 'label' =>  'frontpage_email',
+                'required' => false,
             ))
             ->add('frontpage_phonenumber', null, array(
                 'label' =>  'frontpage_phonenumber',
+                'required' => false,
             ))
             ->add('frontpage_mission', null, array(
                 'label' =>  'frontpage_mission',
+                'required' => false,
             ))
             ->add('frontpage_vision', null, array(
                 'label' =>  'frontpage_vision',
+                'required' => false,
             ))
             ->add('frontpage_active', null, array(
                 'label' =>  'frontpage_active',
+                'required' => false,
+                'attr' => array(
+                    'labeled' => true,
+                ),
             ))
             ->add('frontpage_photos', 'bootstrap_collection', array(
                 'label'                 =>  'frontpage_photos',

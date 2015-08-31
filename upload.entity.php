@@ -83,38 +83,60 @@
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return $this->get('kernel')->getRootDir().'/../web'.$this->getUploadDir();
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return '/uploads/noticias';
+        return '/uploads/frontpage_photos';
     }
 
 
 /** Controller **/
+use Doctrine\Common\Collections\ArrayCollection;
+
+    public function createAction(Request $request)
+    {
+        $entity = new Frontpage();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+/*********************************************************************************/
+            $photos = $entity->getFrontpagePhotos();
+            foreach ($photos as $photo) {
+                $photo->upload();
+                $photo->setPhotoFrontpage($entity);
+                $em->persist($photo);
+            }
+/*********************************************************************************/
+            $em->persist($entity);
+            $em->flush();
+            $request->getSession()->getFlashBag()->add( 'success', 'Frontpage has been created.' );    
+            return $this->redirect($this->generateUrl('frontpage'));
+        }
+        return $this->render('UniAdminBundle:Frontpage:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('UniAdminBundle:Frontpage')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('The Frontpage cannot be found.');
         }
-
+/*********************************************************************************/
         $currentPhotos = new ArrayCollection();
         foreach ($entity->getFrontpagePhotos() as $photo) {
             $currentPhotos->add($photo);
         }
-
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
         if ($editForm->isValid()) {
-
             foreach ($currentPhotos as $photo) {
                 if (false === $entity->getFrontpagePhotos()->contains($photo)) {
                     $em->remove($photo);
@@ -127,11 +149,11 @@
                 $em->persist($photo);
             }
             $em->persist($entity);
+/*********************************************************************************/
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'Frontpage has been updated.' );
             return $this->redirect($this->generateUrl('frontpage'));
         }
-
         return $this->render('UniAdminBundle:Frontpage:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),

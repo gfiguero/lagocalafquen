@@ -388,4 +388,48 @@ class Member
     {
         return $this->member_role;
     }
+
+    public function upload()
+    {
+        if (null === $this->getMemberPhotoFile()) {
+            return;
+        }
+
+        $this->getMemberPhotoFile()->move(
+            $this->getUploadRootDir(),
+            $this->getMemberPhotoFile()->getClientOriginalName()
+        );
+
+        $this->member_photo_path = $this->getMemberPhotoFile()->getClientOriginalName();
+
+        $this->member_photo_file = null;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->member_photo_path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->member_photo_path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->member_photo_path
+            ? null
+            : $this->getUploadDir().'/'.$this->member_photo_path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return '/uploads/member';
+    }
 }

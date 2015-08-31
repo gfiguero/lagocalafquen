@@ -153,7 +153,7 @@ class ReportController extends Controller
 
         $form->add('actions', 'form_actions', [
             'buttons' => [
-                'submit' => ['type' => 'submit', 'options' => ['label' => 'save', 'attr' => array('icon' => 'save', 'class' => 'btn-primary', 'data-toggle' => 'modal', 'data-target' => '#loading')]],
+                'submit' => ['type' => 'submit', 'options' => ['label' => 'save', 'attr' => array('icon' => 'save', 'class' => 'btn-primary')]],
             ]
         ]);
 
