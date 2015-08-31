@@ -1,0 +1,23 @@
+Uni\AdminBundle\Entity\FrontpagePhoto:
+    type: entity
+    table: FrontpagePhoto
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        photo_path:
+            type: string
+            length: '300'
+            nullable: true
+        photo_file:
+            type: string
+            length: '300'
+            nullable: true
+    manyToOne:
+        photo_frontpage:
+            targetEntity: Frontpage
+            inversedBy: frontpage_photos
+    lifecycleCallbacks: {  }

@@ -1,0 +1,85 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ 'frontpage_index'|trans }}{% endblock %}
+
+{% block body -%}
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ 'frontpage_index'|trans }}</h1>
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ icon('remove fa-fw') }}</button>
+                        <strong>{{ 'notification'|trans }}: </strong>{{ flashMessage|trans }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('danger') %}
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ icon('remove fa-fw') }}</button>
+                        <strong>{{ 'notification'|trans }}: </strong>{{ flashMessage|trans }}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{{ path('frontpage_new') }}">{{ icon('file') }}&nbsp;{{ 'frontpage_new'|trans }}</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_title'|trans, 'frontpage_title') }}{% if sort == 'frontpage_title' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_subtitle'|trans, 'frontpage_subtitle') }}{% if sort == 'frontpage_subtitle' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_email'|trans, 'frontpage_email') }}{% if sort == 'frontpage_email' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_phonenumber'|trans, 'frontpage_phonenumber') }}{% if sort == 'frontpage_phonenumber' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_mission'|trans, 'frontpage_mission') }}{% if sort == 'frontpage_mission' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_vision'|trans, 'frontpage_vision') }}{% if sort == 'frontpage_vision' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'frontpage_active'|trans, 'frontpage_active') }}{% if sort == 'frontpage_active' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in pagination %}
+                                <tr class='clickableRow' href="{{ path('frontpage_show', { 'id': entity.id }) }}">
+                                    <td>{% if entity.frontpagetitle %}{{ entity.frontpagetitle }}{% endif %}</td>
+                                    <td>{% if entity.frontpagesubtitle %}{{ entity.frontpagesubtitle }}{% endif %}</td>
+                                    <td>{% if entity.frontpageemail %}{{ entity.frontpageemail }}{% endif %}</td>
+                                    <td>{% if entity.frontpagephonenumber %}{{ entity.frontpagephonenumber }}{% endif %}</td>
+                                    <td>{% if entity.frontpagemission %}{{ entity.frontpagemission }}{% endif %}</td>
+                                    <td>{% if entity.frontpagevision %}{{ entity.frontpagevision }}{% endif %}</td>
+                                    <td>{% if entity.frontpageactive %}{{ entity.frontpageactive }}{% endif %}</td>
+                                    <td>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

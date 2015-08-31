@@ -1,0 +1,31 @@
+{% extends ':Page:base.html.twig' %}
+
+{% block stylesheet %}
+    {% set foto = random(frontpage.frontpagephotos) %}
+    {% set image = '/uploads/frontpage_photos/' ~ foto.photopath %}
+    <style type="text/css">
+    .header-image {
+        background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
+        background-repeat:no-repeat;
+    }
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "notice_index"|trans }}</h1>
+                        <hr class="small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}{% endblock %}

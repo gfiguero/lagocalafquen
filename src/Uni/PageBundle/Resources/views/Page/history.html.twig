@@ -1,0 +1,93 @@
+{% extends ':Page:base.html.twig' %}
+
+{% block stylesheet %}
+    {% set foto = random(frontpage.frontpagephotos) %}
+    {% set image = '/uploads/frontpage_photos/' ~ foto.photopath %}
+    <style type="text/css">
+    .header-image {
+        background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
+        background-repeat:no-repeat;
+    }
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "history_index"|trans }}</h1>
+                        <hr class="small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}
+    <section id="history">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                    {% for history in histories %}
+                        {% if loop.index is odd %}
+                        <li>{% else %}
+                        <li class="timeline-inverted">{% endif %}
+                            <a href="#" data-toggle="modal" data-target="#modal{{ history.id }}">
+                                {% set image = '/uploads/frontpage_photos/' ~ history.historyPhotoPath %}
+                                <div class="timeline-image">
+                                    <img class="img-circle img-responsive" src="{{ asset(image) | imagine_filter('page_small') }}" alt="">
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>{{ history.historyTime }}</h4>
+                                        <h4 class="subheading">{{ history.historyTitle }}</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{ history.historyAbstract }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="modal fade" id="modal{{ history.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="modalLabel{{ history.id }}">{{ history.historyTitle }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <img class="img-rounded img-responsive center-block" alt="{{ history.historyTitle }}" src="{{ asset(image) | imagine_filter('page_large') }}">
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <h4>{{ history.historyTime }}</h4>
+                                                    <h4 class="subheading">{{ history.historyTitle }}</h4>
+                                                    <p class="text-muted">{{ history.historyContent }}</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>La historia
+                                    <br>todavía
+                                    <br>continúa</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

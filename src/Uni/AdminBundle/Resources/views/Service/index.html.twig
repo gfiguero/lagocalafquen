@@ -1,0 +1,83 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ 'service_index'|trans }}{% endblock %}
+
+{% block body -%}
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ 'service_index'|trans }}</h1>
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ icon('remove fa-fw') }}</button>
+                        <strong>{{ 'notification'|trans }}: </strong>{{ flashMessage|trans }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('danger') %}
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ icon('remove fa-fw') }}</button>
+                        <strong>{{ 'notification'|trans }}: </strong>{{ flashMessage|trans }}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{{ path('service_new') }}">{{ icon('file') }}&nbsp;{{ 'service_new'|trans }}</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ knp_pagination_sortable(pagination, 'service_title'|trans, 'service_title') }}{% if sort == 'service_title' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'service_content'|trans, 'service_content') }}{% if sort == 'service_content' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'service_rank'|trans, 'service_rank') }}{% if sort == 'service_rank' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'service_published'|trans, 'service_published') }}{% if sort == 'service_published' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'service_photo_path'|trans, 'service_photo_path') }}{% if sort == 'service_photo_path' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'service_photo_file'|trans, 'service_photo_file') }}{% if sort == 'service_photo_file' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in pagination %}
+                                <tr class='clickableRow' href="{{ path('service_show', { 'id': entity.id }) }}">
+                                    <td>{% if entity.servicetitle %}{{ entity.servicetitle }}{% endif %}</td>
+                                    <td>{% if entity.servicecontent %}{{ entity.servicecontent }}{% endif %}</td>
+                                    <td>{% if entity.servicerank %}{{ entity.servicerank }}{% endif %}</td>
+                                    <td>{% if entity.servicepublished %}{{ entity.servicepublished }}{% endif %}</td>
+                                    <td>{% if entity.servicephotopath %}{{ entity.servicephotopath }}{% endif %}</td>
+                                    <td>{% if entity.servicephotofile %}{{ entity.servicephotofile }}{% endif %}</td>
+                                    <td>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

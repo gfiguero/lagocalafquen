@@ -1,0 +1,43 @@
+Uni\AdminBundle\Entity\Report:
+    type: entity
+    table: Report
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        report_title:
+            type: string
+            length: '200'
+        report_content:
+            type: text
+            nullable: true
+        report_published:
+            type: boolean
+            options:
+                default: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    oneToMany:
+        report_photos:
+            targetEntity: ReportPhoto
+            cascade: [persist]
+            mappedBy: photo_report
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

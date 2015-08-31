@@ -1,0 +1,87 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ 'history_index'|trans }}{% endblock %}
+
+{% block body -%}
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ 'history_index'|trans }}</h1>
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ icon('remove fa-fw') }}</button>
+                        <strong>{{ 'notification'|trans }}: </strong>{{ flashMessage|trans }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('danger') %}
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ icon('remove fa-fw') }}</button>
+                        <strong>{{ 'notification'|trans }}: </strong>{{ flashMessage|trans }}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{{ path('history_new') }}">{{ icon('file') }}&nbsp;{{ 'history_new'|trans }}</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_time'|trans, 'history_time') }}{% if sort == 'history_time' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_title'|trans, 'history_title') }}{% if sort == 'history_title' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_abstract'|trans, 'history_abstract') }}{% if sort == 'history_abstract' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_content'|trans, 'history_content') }}{% if sort == 'history_content' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_rank'|trans, 'history_rank') }}{% if sort == 'history_rank' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_published'|trans, 'history_published') }}{% if sort == 'history_published' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_photo_path'|trans, 'history_photo_path') }}{% if sort == 'history_photo_path' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'history_photo_file'|trans, 'history_photo_file') }}{% if sort == 'history_photo_file' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(pagination, 'updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in pagination %}
+                                <tr class='clickableRow' href="{{ path('history_show', { 'id': entity.id }) }}">
+                                    <td>{% if entity.historytime %}{{ entity.historytime }}{% endif %}</td>
+                                    <td>{% if entity.historytitle %}{{ entity.historytitle }}{% endif %}</td>
+                                    <td>{% if entity.historyabstract %}{{ entity.historyabstract }}{% endif %}</td>
+                                    <td>{% if entity.historycontent %}{{ entity.historycontent }}{% endif %}</td>
+                                    <td>{% if entity.historyrank %}{{ entity.historyrank }}{% endif %}</td>
+                                    <td>{% if entity.historypublished %}{{ entity.historypublished }}{% endif %}</td>
+                                    <td>{% if entity.historyphotopath %}{{ entity.historyphotopath }}{% endif %}</td>
+                                    <td>{% if entity.historyphotofile %}{{ entity.historyphotofile }}{% endif %}</td>
+                                    <td>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

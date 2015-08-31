@@ -1,0 +1,24 @@
+uni_page:
+    path:     /
+    defaults: { _controller: UniPageBundle:Page:index }
+
+uni_page_member:
+    path:   /member
+    defaults: { _controller: UniPageBundle:Page:member }
+
+uni_page_history:
+    path:   /history
+    defaults: { _controller: UniPageBundle:Page:history }
+
+uni_page_notice:
+    path:   /notice
+    defaults: { _controller: UniPageBundle:Page:notice }
+
+uni_page_report:
+    path:   /report
+    defaults: { _controller: UniPageBundle:Page:report }
+
+uni_page_role:
+    path:   /role
+    defaults: { _controller: UniPageBundle:Page:role }
+

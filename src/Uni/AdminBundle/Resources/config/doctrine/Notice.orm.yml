@@ -1,0 +1,55 @@
+Uni\AdminBundle\Entity\Notice:
+    type: entity
+    table: Notice
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        notice_title:
+            type: string
+            length: '200'
+        notice_content:
+            type: text
+            nullable: true
+        notice_published:
+            type: boolean
+            options:
+                default: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    oneToMany:
+        notice_photos:
+            targetEntity: NoticePhoto
+            cascade: [persist]
+            mappedBy: photo_notice
+    manyToMany:
+        notice_noticecategory:
+            targetEntity: NoticeCategory
+            inversedBy: noticecategory_notice
+            joinTable:
+                name: NoticeCategoryNub
+                joinColumns:
+                    noticecategory:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    notice:
+                        referencedColumnName: id
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

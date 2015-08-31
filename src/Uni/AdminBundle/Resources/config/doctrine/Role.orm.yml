@@ -1,0 +1,37 @@
+Uni\AdminBundle\Entity\Role:
+    type: entity
+    table: Role
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        role_name:
+            type: string
+            length: '100'
+        role_rank:
+            type: integer
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    oneToMany:
+        role_member:
+            targetEntity: Member
+            mappedBy: member_role
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

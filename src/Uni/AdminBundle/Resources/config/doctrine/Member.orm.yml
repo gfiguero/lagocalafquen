@@ -1,0 +1,65 @@
+Uni\AdminBundle\Entity\Member:
+    type: entity
+    table: Member
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        member_firstname:
+            type: string
+            length: '200'
+        member_lastname:
+            type: string
+            length: '200'
+            nullable: true
+        member_email:
+            type: string
+            length: '100'
+            nullable: true
+        member_phonenumber:
+            type: string
+            length: '100'
+            nullable: true
+        member_birthdate:
+            type: date
+            nullable: true
+        member_admissiondate:
+            type: date
+            nullable: true
+        member_active:
+            type: boolean
+            options:
+                default: true
+        member_photo_path:
+            type: string
+            length: '300'
+            nullable: true
+        member_photo_file:
+            type: string
+            length: '300'
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    manyToOne:
+        member_role:
+            targetEntity: Role
+            inversedBy: role_member
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

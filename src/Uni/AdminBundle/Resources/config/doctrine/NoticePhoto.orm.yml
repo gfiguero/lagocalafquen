@@ -1,0 +1,23 @@
+Uni\AdminBundle\Entity\NoticePhoto:
+    type: entity
+    table: NoticePhoto
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        photo_path:
+            type: string
+            length: '300'
+            nullable: true
+        photo_file:
+            type: string
+            length: '300'
+            nullable: true
+    manyToOne:
+        photo_notice:
+            targetEntity: Notice
+            inversedBy: notice_photos
+    lifecycleCallbacks: {  }

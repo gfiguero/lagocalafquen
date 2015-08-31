@@ -1,0 +1,73 @@
+    /**
+{% block phpdoc_method_header %}
+     * Modifies a {{ entity }} entity.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/{id}", name="{{ route_name_prefix }}_modify")
+     * @Method("DELETE")
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function modifyAction(Request $request, $id)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $modifyForm = $this->createModifyForm($id);
+        $modifyForm->handleRequest($request);
+
+        if ($modifyForm->isValid()) {
+
+            if ($modifyForm->get('actions')->get('edit')->isClicked()) {
+                return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('No se pudo encontrar la entidad {{ entity }}.');
+            }
+
+            if ($modifyForm->get('actions')->get('delete')->isClicked()) {
+                $em->remove($entity);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'danger', '{{ entity }} fue eliminado' );
+            }
+
+        }
+{% endblock method_body %}
+
+{% block method_return %}
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+{% endblock method_return %}
+    }
+
+{% block form %}
+    /**
+     * Creates a form to modifies or delete a {{ entity }} entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+
+    private function createModifyForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('{{ route_name_prefix }}_modify', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('actions', 'form_actions', [
+                'attr' => array('style' => 'modify'),
+                'buttons' => [
+                    'edit' => ['type' => 'submit', 'options' => ['label' => ' Editar', 'attr' => array('icon' => 'pencil', 'class' => 'btn-default')]],
+                    'delete' => ['type' => 'submit', 'options' => ['label' => ' Eliminar', 'attr' => array('icon' => 'trash-o', 'class' => 'btn-danger')]],
+                ]
+            ])
+            ->getForm()
+        ;
+    }
+
+{% endblock form %}

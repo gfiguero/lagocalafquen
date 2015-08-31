@@ -1,0 +1,40 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ app.request.attributes.get('_route')|trans }}{% endblock %}
+
+{% block body -%}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ app.request.attributes.get('_route')|trans }} ID: {{ entity.id }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {{ form(edit_form, { 'style': 'horizontal' }) }}
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="modal" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h4 class="modal-title" id="myModalLabel">Loading data, please wait...</h4>
+                            <div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}

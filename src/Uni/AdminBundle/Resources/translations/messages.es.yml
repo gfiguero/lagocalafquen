@@ -1,0 +1,165 @@
+# All
+notification: Notificación
+createdAt: Fecha de Registro
+updatedAt: Última Actualización
+deletedAt: Fecha de Borrado
+Deleted records can not be recovered.: Los registros borrados no podrán ser recuperados.
+Are you sure?: ¿Está seguro?
+login: Acceso
+logout: Salir
+
+# All Buttons
+create: Registrar
+save: Guardar
+edit: Editar
+delete: Borrar
+confirm: Confirmar
+cancel: Cancelar
+back: Volver
+
+# ---------------------------------------------------------------
+
+# Frontpage
+frontpage: Portada
+frontpages: Portadas
+frontpage_index: Portadas
+frontpage_new: Nueva portada
+frontpage_show: Ver portada
+frontpage_edit: Editar portada
+frontpage_title: Título de la portada
+frontpage_subtitle: Subtítulo
+frontpage_email: Email de contacto
+frontpage_phonenumber: Teléfono de contacto
+frontpage_mission: Misión
+frontpage_vision: Visión
+frontpage_active: Portada activa
+frontpage_photos: Fotos de portada
+frontpage_photo_add: Agregar foto de portada
+frontpage_photo_delete: Borrar foto de portada
+Frontpage has been created.: La portada ha sido creada.
+Frontpage has been updated.: La portada ha sido actualizada.
+Frontpage has been deleted.: La portada ha sido borrada.
+
+# Member
+member: Miembro
+members: Miembros
+member_index: Miembros
+member_new: Nuevo Miembro
+member_show: Ver Miembro
+member_edit: Editar Miembro
+member_firstname: Nombre
+member_lastname: Apellido
+member_email: Email
+member_phonenumber: Teléfono
+member_birthdate: Fecha Nacimiento
+member_admissiondate: Fecha Ingreso
+member_active: Activo
+member_photo_file: Foto Perfil
+member_photo_path: Directorio
+member_role: Cargo Asignado
+Member has been created.: El miembro ha sido creado.
+Member has been updated.: El miembro ha sido actualizado.
+Member has been deleted.: El miembro ha sido borrado.
+
+# Role
+role: Cargo
+roles: Cargos
+role_index: Cargos
+role_new: Nuevo Cargo
+role_show: Ver Cargo
+role_edit: Editar Cargo
+role_name: Nombre
+role_rank: Rango
+Role has been created.: El cargo ha sido creado.
+Role has been updated.: El cargo ha sido actualizado.
+Role has been deleted.: El cargo ha sido borrado.
+
+# User
+user: Usuario
+users: Usuarios
+user_index: Usuarios
+user_new: Nuevo Usuario
+user_show: Ver Usuario
+user_edit: Editar Usuario
+user_firstname: Nombre
+user_lastname: Apellido
+User has been created.: El usuario ha sido creado.
+User has been updated.: El usuario ha sido actualizado.
+User has been deleted.: El usuario ha sido borrado.
+
+# FOS User
+fos_user_registration_register: Registrar nuevo usuario
+
+# Notice
+notice: Noticia
+notices: Noticias
+notice_index: Noticias
+notice_new: Nueva Noticia
+notice_show: Ver Noticia
+notice_edit: Editar Noticia
+notice_title: Título
+notice_content: Contenido
+notice_published: Publicada
+notice_photos: Fotos
+notice_noticecategory: Categoría
+Notice has been created.: La noticia ha sido creada.
+Notice has been updated.: La noticia ha sido actualizada.
+Notice has been deleted.: La noticia ha sido borrada.
+
+# NoticeCategory
+noticecategory: Categoría de noticias
+noticecategory_index: Categorías de noticias
+noticecategory_new: Nueva Categoría
+noticecategory_show: Ver Categoría
+noticecategory_edit: Editar Categoría
+noticecategory_name: Nombre
+NoticeCategory has been created.: La categoría de noticias ha sido creada.
+NoticeCategory has been updated.: La categoría de noticias ha sido actualizada.
+NoticeCategory has been deleted.: La categoría de noticias ha sido borrada.
+
+# History
+history: Historia
+history_index: Historias
+history_new: Nueva Historia
+history_show: Ver Historia
+history_edit: Editar Historia
+history_time: Momento
+history_title: Título
+history_abstract: Resumen
+history_content: Descripción
+history_rank: Orden
+history_published: Publicada
+history_photo_file: Foto
+History has been created.: La historia ha sido creada.
+History has been updated.: La historia ha sido actualizada.
+History has been deleted.: La historia ha sido borrada.
+
+# Service
+service: Servicio
+service_index: Servicios
+service_new: Nuevo Servicio
+service_show: Ver Servicio
+service_edit: Editar Servicio
+service_title: Título
+service_content: Descripción
+service_rank: Orden
+service_published: Publicado
+service_photo_file: Foto
+Service has been created.: El servicio ha sido creado.
+Service has been updated.: El servicio ha sido actualizado.
+Service has been deleted.: El servicio ha sido borrado.
+
+# Reports
+report: Reportes
+report_index: Reportes
+report_new: Nuevo Reporte
+report_show: Ver Reporte
+report_edit: Editar Reporte
+report_title: Título
+report_content: Contenido
+report_published: Publicado
+report_photo: Foto
+Reports has been created.: La historia ha sido creada.
+Reports has been updated.: La historia ha sido actualizada.
+Reports has been deleted.: La historia ha sido borrada.
+
