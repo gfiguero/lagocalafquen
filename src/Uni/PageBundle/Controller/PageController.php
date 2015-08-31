@@ -21,8 +21,10 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $frontpage = $em->getRepository('UniAdminBundle:Frontpage')->findOneBy(array('frontpage_active' => true), array('createdAt' => 'DESC'));
+        $members = $em->getRepository('UniAdminBundle:Member')->findBy(array('member_active' => true), array('member_admissiondate' => 'ASC'));
         return $this->render('UniPageBundle:Page:member.html.twig', array(
-            'frontpage' => $frontpage
+            'frontpage' => $frontpage,
+            'members' => $members,
         ));
     }
 

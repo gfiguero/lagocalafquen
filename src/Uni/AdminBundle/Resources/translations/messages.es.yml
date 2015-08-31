@@ -41,12 +41,12 @@ Frontpage has been updated.: La portada ha sido actualizada.
 Frontpage has been deleted.: La portada ha sido borrada.
 
 # Member
-member: Miembro
-members: Miembros
-member_index: Miembros
-member_new: Nuevo Miembro
-member_show: Ver Miembro
-member_edit: Editar Miembro
+member: Colaborador
+members: Colaboradores
+member_index: Colaboradores
+member_new: Nuevo Colaborador
+member_show: Ver Colaborador
+member_edit: Editar Colaborador
 member_firstname: Nombre
 member_lastname: Apellido
 member_email: Email
@@ -57,9 +57,9 @@ member_active: Activo
 member_photo_file: Foto Perfil
 member_photo_path: Directorio
 member_role: Cargo Asignado
-Member has been created.: El miembro ha sido creado.
-Member has been updated.: El miembro ha sido actualizado.
-Member has been deleted.: El miembro ha sido borrado.
+Member has been created.: El colaborador ha sido creado.
+Member has been updated.: El colaborador ha sido actualizado.
+Member has been deleted.: El colaborador ha sido borrado.
 
 # Role
 role: Cargo

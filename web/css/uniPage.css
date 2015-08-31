@@ -218,6 +218,26 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #337ab7;
 }
+.member-caption {
+  min-height: 65px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.member-caption h3 {
+  font-size: 16px;
+  text-transform: none;
+  font-style: italic;
+  font-weight: 700;
+  min-height: 34px;
+  margin-bottom: 10px;
+}
+.member-caption p {
+  font-size: 12px;
+  text-transform: none;
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;

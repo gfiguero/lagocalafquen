@@ -27,7 +27,7 @@ Uni\AdminBundle\Entity\NoticeCategory:
     manyToMany:
         noticecategory_notice:
             targetEntity: Notice
-            mappedBy: notice_categorynotice
+            mappedBy: notice_noticecategory
     gedmo:
         soft_deleteable:
             field_name: deletedAt

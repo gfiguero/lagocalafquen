@@ -39,8 +39,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-md-4">
-                            {% set image = 'uploads/member/' ~ entity.memberphotopath %}
-                            <img src="{{ asset(image) | imagine_filter('member_show') }}" alt="..." class="img-responsive img-thumbnail">
+                            <img class="img-rounded img-responsive" alt="{{ entity.memberfirstname }}" src="{{ asset(entity.webpath) | imagine_filter('admin_member') }}">
                         </div>
                         <div class="col-md-8">
                             <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">

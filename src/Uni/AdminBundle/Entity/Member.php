@@ -415,7 +415,7 @@ class Member
     public function getWebPath()
     {
         return null === $this->member_photo_path
-            ? null
+            ? 'default'
             : $this->getUploadDir().'/'.$this->member_photo_path;
     }
 

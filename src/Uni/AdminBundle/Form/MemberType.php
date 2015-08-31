@@ -45,10 +45,6 @@ class MemberType extends AbstractType
                     'labeled' => true,
                 ),
             ))
-            ->add('member_photo_path', null, array(
-                'label' =>  'member_photo_path',
-                'required' => false,
-            ))
             ->add('member_photo_file', 'file', array(
                 'label' =>  'member_photo_file',
                 'required' => false,

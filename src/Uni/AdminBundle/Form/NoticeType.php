@@ -22,10 +22,17 @@ class NoticeType extends AbstractType
                 'label' =>  'notice_content',
             ))
             ->add('notice_published', null, array(
-                'label' =>  'notice_published',
+                'label' => 'notice_published',
+                'attr' => array(
+                    'labeled' => true,
+                ),
             ))
-            ->add('notice_noticecategory', null, array(
+            ->add('notice_noticecategory', 'entity', array(
+                'class' => 'UniAdminBundle:NoticeCategory',
                 'label' =>  'notice_noticecategory',
+                'choice_label' => 'noticecategory_name',
+                'multiple' => true,
+                'expanded' => true,
             ))
         ;
     }

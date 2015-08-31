@@ -19,6 +19,7 @@
                     <div class="site-heading">
                         <h1>{{ "member_index"|trans }}</h1>
                         <hr class="small">
+                        <span class="subheading">{{ frontpage.frontpagetitle }}</span>
                     </div>
                 </div>
             </div>
@@ -28,4 +29,22 @@
 
 {% block javascript %}{% endblock %}
 
-{% block body -%}{% endblock %}
+{% block body -%}
+    <section id="member">
+        <div class="container">
+            <div class="row text-center">
+                {% for member in members %}
+                <div class="col-xs-4 col-lg-2">
+                    <div class="thumbnail borderless">
+                        <img class="img-rounded img-responsive" alt="{{ member.memberfirstname }}" src="{{ asset(member.webpath) | imagine_filter('page_member') }}">
+                        <div class="member-caption">
+                            <h3>{{ member.memberfirstname ~ ' ' ~ member.memberlastname }}</h3>
+                            <p>{% if member.memberrole %}{{ member.memberrole.rolename }}{% endif %}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

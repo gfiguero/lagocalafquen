@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: images.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -255,65 +256,3 @@ knp_paginator:
         #pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
         pagination: :Pagination:pagination.html.twig
-
-liip_imagine:
-
-    resolvers:
-        default:
-            web_path: ~
-
-    filter_sets:
-        cache: ~
-        frontpage:
-            quality: 75
-            filters:
-                thumbnail: { size: [1920, 450], mode: outbound }
-        frontpage_edit:
-            quality: 50
-            filters:
-                upscale: { min: [840, 200] }
-                thumbnail: { size: [840, 200], mode: outbound }
-        member_show:
-            quality: 75
-            filters:
-                upscale: { min: [300, 400] }
-                thumbnail: { size: [300, 400], mode: outbound }
-        page_header:
-            quality: 75
-            filters:
-                upscale: { min: [1920, 450] }
-                thumbnail: { size: [1920, 450], mode: outbound }
-        page_small:
-            quality: 50
-            filters:
-                thumbnail: { size: [200, 200], mode: outbound }
-        page_medium:
-            quality: 75
-            filters:
-                thumbnail: { size: [800, 600], mode: outbound }
-        page_large:
-            quality: 75
-            filters:
-                thumbnail: { size: [1366, 768], mode: outbound }
-
-
-        noticia:
-            quality: 75
-            default_image: /uploads/perfil/default.png
-            filters:
-                thumbnail: { size: [512, 288], mode: outbound }
-        noticia_edit:
-            quality: 75
-            default_image: /uploads/perfil/default.png
-            filters:
-                thumbnail: { size: [250, 150], mode: outbound }
-        noticia_show:
-            quality: 75
-            default_image: /uploads/perfil/default.png
-            filters:
-                relative_resize: { heighten: 1000 }
-                thumbnail: { size: [1140, 500], mode: outbound }
-        inicio:
-            quality: 90
-            filters:
-                thumbnail: { size: [1920, 1080], mode: outbound }

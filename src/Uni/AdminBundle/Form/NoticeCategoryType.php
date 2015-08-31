@@ -18,9 +18,6 @@ class NoticeCategoryType extends AbstractType
             ->add('noticecategory_name', null, array(
                 'label' =>  'noticecategory_name',
             ))
-            ->add('noticecategory_notice', null, array(
-                'label' =>  'noticecategory_notice',
-            ))
         ;
     }
     
