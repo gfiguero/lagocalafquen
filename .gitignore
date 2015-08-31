@@ -9,4 +9,6 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/web/uploads/*
+/web/media/*
 /bower_components/
