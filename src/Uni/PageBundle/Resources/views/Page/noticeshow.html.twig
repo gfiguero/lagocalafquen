@@ -1,0 +1,46 @@
+{% extends ':Page:base.html.twig' %}
+
+{% block stylesheet %}
+    {% set foto = random(frontpage.frontpagephotos) %}
+    {% set image = '/uploads/frontpage_photos/' ~ foto.photopath %}
+    <style type="text/css">
+    .header-image {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
+    }
+    </style>
+{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "notice_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{{ frontpage.frontpagetitle }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}
+    <section id="noticeshow">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="featurette-heading">{{ notice.noticetitle }}</h3>
+                    <h6 class="text-muted">
+                        Publicado: {{ notice.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }},
+                        Última actualización: {{ notice.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}
+                    </h6>
+                    <p>{{ notice.noticecontent | raw }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
