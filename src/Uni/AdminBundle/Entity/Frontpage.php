@@ -45,6 +45,11 @@ class Frontpage
     private $frontpage_vision;
 
     /**
+     * @var string
+     */
+    private $frontpage_special;
+
+    /**
      * @var boolean
      */
     private $frontpage_active;
@@ -223,6 +228,29 @@ class Frontpage
     public function getFrontpageVision()
     {
         return $this->frontpage_vision;
+    }
+
+    /**
+     * Set frontpage_special
+     *
+     * @param string $frontpageVision
+     * @return Frontpage
+     */
+    public function setFrontpageSpecial($frontpageSpecial)
+    {
+        $this->frontpage_special = $frontpageSpecial;
+
+        return $this;
+    }
+
+    /**
+     * Get frontpage_special
+     *
+     * @return string 
+     */
+    public function getFrontpageSpecial()
+    {
+        return $this->frontpage_special;
     }
 
     /**

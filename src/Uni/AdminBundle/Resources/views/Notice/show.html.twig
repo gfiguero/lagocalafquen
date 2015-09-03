@@ -40,8 +40,8 @@
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'notice_title'|trans }}</dt><dd>{% if entity.noticetitle %}{{ entity.noticetitle }}{% endif %}</dd>
-                            <dt>{{ 'notice_content'|trans }}</dt><dd>{% if entity.noticecontent %}{{ entity.noticecontent }}{% endif %}</dd>
-                            <dt>{{ 'notice_published'|trans }}</dt><dd>{% if entity.noticepublished %}{{ entity.noticepublished }}{% endif %}</dd>
+                            <dt>{{ 'notice_content'|trans }}</dt><dd>{% if entity.noticecontent %}{{ entity.noticecontent|raw }}{% endif %}</dd>
+                            <dt>{{ 'notice_published'|trans }}</dt><dd>{% if entity.noticepublished %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
                             <dt>{{ 'createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                         </dl>

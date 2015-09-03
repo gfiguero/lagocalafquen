@@ -15,28 +15,44 @@ class FrontpageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('frontpage_title', null, array(
+            ->add('frontpage_title', 'text', array(
                 'label' =>  'frontpage_title',
             ))
-            ->add('frontpage_subtitle', null, array(
+            ->add('frontpage_subtitle', 'text', array(
                 'label' =>  'frontpage_subtitle',
                 'required' => false,
             ))
-            ->add('frontpage_email', null, array(
+            ->add('frontpage_email', 'text', array(
                 'label' =>  'frontpage_email',
                 'required' => false,
             ))
-            ->add('frontpage_phonenumber', null, array(
+            ->add('frontpage_phonenumber', 'text', array(
                 'label' =>  'frontpage_phonenumber',
                 'required' => false,
             ))
-            ->add('frontpage_mission', null, array(
+            ->add('frontpage_mission', 'textarea', array(
                 'label' =>  'frontpage_mission',
                 'required' => false,
+                'attr'  =>  array(
+                    'class' =>  'tinymce',
+                    'data-theme' => 'advanced',
+                ),
             ))
-            ->add('frontpage_vision', null, array(
+            ->add('frontpage_vision', 'textarea', array(
                 'label' =>  'frontpage_vision',
                 'required' => false,
+                'attr'  =>  array(
+                    'class' =>  'tinymce',
+                    'data-theme' => 'advanced',
+                ),
+            ))
+            ->add('frontpage_special', 'textarea', array(
+                'label' =>  'frontpage_special',
+                'required' => false,
+                'attr'  =>  array(
+                    'class' =>  'tinymce',
+                    'data-theme' => 'advanced',
+                ),
             ))
             ->add('frontpage_active', null, array(
                 'label' =>  'frontpage_active',

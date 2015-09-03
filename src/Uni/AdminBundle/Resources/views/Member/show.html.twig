@@ -49,7 +49,7 @@
                                 <dt>{{ 'member_phonenumber'|trans }}</dt><dd>{% if entity.memberphonenumber %}{{ entity.memberphonenumber }}{% endif %}</dd>
                                 <dt>{{ 'member_birthdate'|trans }}</dt><dd>{% if entity.memberbirthdate %}{{ entity.memberbirthdate|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                                 <dt>{{ 'member_admissiondate'|trans }}</dt><dd>{% if entity.memberadmissiondate %}{{ entity.memberadmissiondate|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                                <dt>{{ 'member_active'|trans }}</dt><dd>{% if entity.memberactive %}{{ entity.memberactive }}{% endif %}</dd>
+                                <dt>{{ 'member_active'|trans }}</dt><dd>{% if entity.memberactive %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
                                 <dt>{{ 'member_photo_path'|trans }}</dt><dd>{% if entity.memberphotopath %}{{ entity.memberphotopath }}{% endif %}</dd>
                                 <dt>{{ 'member_photo_file'|trans }}</dt><dd>{% if entity.memberphotofile %}{{ entity.memberphotofile }}{% endif %}</dd>
                                 <dt>{{ 'createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>

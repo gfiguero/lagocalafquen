@@ -15,26 +15,26 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('member_firstname', null, array(
+            ->add('member_firstname', 'text', array(
                 'label' =>  'member_firstname',
             ))
-            ->add('member_lastname', null, array(
+            ->add('member_lastname', 'text', array(
                 'label' =>  'member_lastname',
                 'required' => false,
             ))
-            ->add('member_email', null, array(
+            ->add('member_email', 'text', array(
                 'label' =>  'member_email',
                 'required' => false,
             ))
-            ->add('member_phonenumber', null, array(
+            ->add('member_phonenumber', 'text', array(
                 'label' =>  'member_phonenumber',
                 'required' => false,
             ))
-            ->add('member_birthdate', null, array(
+            ->add('member_birthdate', 'birthday', array(
                 'label' =>  'member_birthdate',
                 'required' => false,
             ))
-            ->add('member_admissiondate', null, array(
+            ->add('member_admissiondate', 'birthday', array(
                 'label' =>  'member_admissiondate',
                 'required' => false,
             ))
@@ -53,6 +53,7 @@ class MemberType extends AbstractType
                 'label' =>  'member_role',
                 'class' => 'UniAdminBundle:Role',
                 'choice_label' => 'role_name',
+                'required' => false,
             ))
         ;
     }

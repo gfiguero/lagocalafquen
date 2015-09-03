@@ -127,14 +127,18 @@ hr.small {
   }
 }
 .intro-header {
-  background-color: #808080;
-  background: no-repeat center center;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
   background-attachment: scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  margin-bottom: 50px;
+  background-position: center top;
+  background-size: 1366px 320px;
+  background-clip: border-box;
+}
+@media only screen and (min-width: 768px) {
+  .intro-header {
+    background-attachment: fixed;
+    background-size: 1920px 450px;
+  }
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
@@ -258,16 +262,23 @@ hr.small {
   border-bottom-left-radius: 5px;
 }
 footer {
-  padding: 50px 0 65px;
+  position: relative;
+  width: 100%;
+  clear: both;
 }
 footer .list-inline {
   margin: 0;
   padding: 0;
 }
 footer .copyright {
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
-  margin-bottom: 0;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+}
+footer p {
+  margin: 0;
 }
 .floating-label-form-group {
   font-size: 14px;

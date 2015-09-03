@@ -32,6 +32,7 @@ frontpage_email: Email de contacto
 frontpage_phonenumber: Teléfono de contacto
 frontpage_mission: Misión
 frontpage_vision: Visión
+frontpage_special: Mesaje GC
 frontpage_active: Portada activa
 frontpage_photos: Fotos de portada
 frontpage_photo_add: Agregar foto de portada
@@ -150,16 +151,16 @@ Service has been updated.: El servicio ha sido actualizado.
 Service has been deleted.: El servicio ha sido borrado.
 
 # Reports
-report: Reportes
-report_index: Reportes
-report_new: Nuevo Reporte
-report_show: Ver Reporte
-report_edit: Editar Reporte
+report: Publicaciones
+report_index: Publicaciones
+report_new: Nueva Publicación
+report_show: Ver Publicación
+report_edit: Editar Publicación
 report_title: Título
 report_content: Contenido
 report_published: Publicado
 report_photo: Foto
-Reports has been created.: La historia ha sido creada.
-Reports has been updated.: La historia ha sido actualizada.
-Reports has been deleted.: La historia ha sido borrada.
+Reports has been created.: La publicación ha sido creada.
+Reports has been updated.: La publicación ha sido actualizada.
+Reports has been deleted.: La publicación ha sido borrada.
 

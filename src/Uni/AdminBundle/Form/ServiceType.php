@@ -20,18 +20,28 @@ class ServiceType extends AbstractType
             ))
             ->add('service_content', null, array(
                 'label' =>  'service_content',
+                'required' => false,
+                'attr'  =>  array(
+                    'class' =>  'tinymce',
+                    'data-theme' => 'advanced',
+                ),
             ))
             ->add('service_rank', null, array(
                 'label' =>  'service_rank',
             ))
             ->add('service_published', null, array(
                 'label' =>  'service_published',
+                'required' => false,
+                'attr'  => array(
+                    'labeled' => true,
+                ),
             ))
-            ->add('service_photo_path', null, array(
+            ->add('service_photo_path', 'hidden', array(
                 'label' =>  'service_photo_path',
             ))
-            ->add('service_photo_file', null, array(
+            ->add('service_photo_file', 'file', array(
                 'label' =>  'service_photo_file',
+                'required' => false,
             ))
         ;
     }

@@ -22,6 +22,9 @@ class FrontpagePhotoType extends AbstractType
             ->add('photo_file', 'file', array(
                 'required'  =>  false,
                 'label' =>  'photo_file',
+                'attr' => array(
+                    'class' => 'file',
+                ),
             ))
         ;
     }

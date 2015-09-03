@@ -46,6 +46,7 @@ class ServiceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -177,6 +178,7 @@ class ServiceController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->upload();
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'Service has been updated.' );
             return $this->redirect($this->generateUrl('service'));

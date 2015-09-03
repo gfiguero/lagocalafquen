@@ -156,12 +156,19 @@ hr.small {
 // Header
 
 .intro-header {
-	background-color: @gray; 
-	background: no-repeat center center; 
+	background-color: @body-bg; 
+	background-repeat:no-repeat;
 	background-attachment: scroll;
-	.background-cover;
+	background-position: center top;
+	background-size: 1366px 320px;
+	background-clip: border-box;
+	//.background-cover;
 	// NOTE: Background images are set within the HTML using inline CSS!
-	margin-bottom: 50px;
+	//margin-bottom: 50px;
+	@media only screen and (min-width: 768px) {
+		background-attachment: fixed;
+		background-size: 1920px 450px;
+	}
 	.site-heading,
 	.post-heading,
 	.page-heading {
@@ -292,15 +299,22 @@ hr.small {
 }
 
 footer {
-	padding: 50px 0 65px;
+	position: relative;
+	width: 100%;
+	clear: both;
 	.list-inline {
 		margin: 0;
 		padding: 0;
 	}
 	.copyright {
-		font-size: 14px;
+		font-size: 16px;
 		text-align: center;
-		margin-bottom: 0;
+		height: 60px;
+		line-height: 60px;
+		vertical-align: middle;
+	}
+	p {
+		margin: 0;
 	}
 }
 

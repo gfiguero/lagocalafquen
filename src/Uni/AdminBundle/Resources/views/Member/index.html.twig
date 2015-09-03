@@ -47,10 +47,6 @@
                                     <th>{{ knp_pagination_sortable(pagination, 'member_birthdate'|trans, 'member_birthdate') }}{% if sort == 'member_birthdate' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(pagination, 'member_admissiondate'|trans, 'member_admissiondate') }}{% if sort == 'member_admissiondate' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(pagination, 'member_active'|trans, 'member_active') }}{% if sort == 'member_active' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(pagination, 'member_photo_path'|trans, 'member_photo_path') }}{% if sort == 'member_photo_path' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(pagination, 'member_photo_file'|trans, 'member_photo_file') }}{% if sort == 'member_photo_file' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(pagination, 'createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(pagination, 'updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,11 +58,7 @@
                                     <td>{% if entity.memberphonenumber %}{{ entity.memberphonenumber }}{% endif %}</td>
                                     <td>{% if entity.memberbirthdate %}{{ entity.memberbirthdate|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y") }}{% endif %}</td>
                                     <td>{% if entity.memberadmissiondate %}{{ entity.memberadmissiondate|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y") }}{% endif %}</td>
-                                    <td>{% if entity.memberactive %}{{ entity.memberactive }}{% endif %}</td>
-                                    <td>{% if entity.memberphotopath %}{{ entity.memberphotopath }}{% endif %}</td>
-                                    <td>{% if entity.memberphotofile %}{{ entity.memberphotofile }}{% endif %}</td>
-                                    <td>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
-                                    <td>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if entity.memberactive %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

@@ -38,16 +38,19 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                            <dt>{{ 'service_title'|trans }}</dt><dd>{% if entity.servicetitle %}{{ entity.servicetitle }}{% endif %}</dd>
-                            <dt>{{ 'service_content'|trans }}</dt><dd>{% if entity.servicecontent %}{{ entity.servicecontent }}{% endif %}</dd>
-                            <dt>{{ 'service_rank'|trans }}</dt><dd>{% if entity.servicerank %}{{ entity.servicerank }}{% endif %}</dd>
-                            <dt>{{ 'service_published'|trans }}</dt><dd>{% if entity.servicepublished %}{{ entity.servicepublished }}{% endif %}</dd>
-                            <dt>{{ 'service_photo_path'|trans }}</dt><dd>{% if entity.servicephotopath %}{{ entity.servicephotopath }}{% endif %}</dd>
-                            <dt>{{ 'service_photo_file'|trans }}</dt><dd>{% if entity.servicephotofile %}{{ entity.servicephotofile }}{% endif %}</dd>
-                            <dt>{{ 'createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                        </dl>
+                        <div class="col-md-4">
+                            <img class="img-rounded img-responsive" alt="{{ entity.servicetitle }}" src="{{ asset(entity.webpath) | imagine_filter('admin_service') }}">
+                        </div>
+                        <div class="col-md-8">
+                            <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                                <dt>{{ 'service_title'|trans }}</dt><dd>{% if entity.servicetitle %}{{ entity.servicetitle }}{% endif %}</dd>
+                                <dt>{{ 'service_content'|trans }}</dt><dd>{% if entity.servicecontent %}{{ entity.servicecontent|raw }}{% endif %}</dd>
+                                <dt>{{ 'service_rank'|trans }}</dt><dd>{% if entity.servicerank %}{{ entity.servicerank }}{% endif %}</dd>
+                                <dt>{{ 'service_published'|trans }}</dt><dd>{% if entity.servicepublished %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
+                                <dt>{{ 'createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                                <dt>{{ 'updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            </dl>
+                        </div>
                     </div>
                 </div>
             </div>

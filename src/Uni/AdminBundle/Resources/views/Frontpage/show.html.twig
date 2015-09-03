@@ -43,9 +43,10 @@
                             <dt>{{ 'frontpage_subtitle'|trans }}</dt><dd>{% if entity.frontpagesubtitle %}{{ entity.frontpagesubtitle }}{% endif %}</dd>
                             <dt>{{ 'frontpage_email'|trans }}</dt><dd>{% if entity.frontpageemail %}{{ entity.frontpageemail }}{% endif %}</dd>
                             <dt>{{ 'frontpage_phonenumber'|trans }}</dt><dd>{% if entity.frontpagephonenumber %}{{ entity.frontpagephonenumber }}{% endif %}</dd>
-                            <dt>{{ 'frontpage_mission'|trans }}</dt><dd>{% if entity.frontpagemission %}{{ entity.frontpagemission }}{% endif %}</dd>
-                            <dt>{{ 'frontpage_vision'|trans }}</dt><dd>{% if entity.frontpagevision %}{{ entity.frontpagevision }}{% endif %}</dd>
-                            <dt>{{ 'frontpage_active'|trans }}</dt><dd>{% if entity.frontpageactive %}{{ entity.frontpageactive }}{% endif %}</dd>
+                            <dt>{{ 'frontpage_mission'|trans }}</dt><dd>{% if entity.frontpagemission %}{{ entity.frontpagemission|raw }}{% endif %}</dd>
+                            <dt>{{ 'frontpage_vision'|trans }}</dt><dd>{% if entity.frontpagevision %}{{ entity.frontpagevision|raw }}{% endif %}</dd>
+                            <dt>{{ 'frontpage_special'|trans }}</dt><dd>{% if entity.frontpagespecial %}{{ entity.frontpagespecial|raw }}{% endif %}</dd>
+                            <dt>{{ 'frontpage_active'|trans }}</dt><dd>{% if entity.frontpageactive %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
                             <dt>{{ 'createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                         </dl>

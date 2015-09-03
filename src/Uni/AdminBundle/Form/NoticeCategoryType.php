@@ -15,7 +15,7 @@ class NoticeCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('noticecategory_name', null, array(
+            ->add('noticecategory_name', 'text', array(
                 'label' =>  'noticecategory_name',
             ))
         ;

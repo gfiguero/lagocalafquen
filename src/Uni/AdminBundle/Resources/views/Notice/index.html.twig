@@ -41,7 +41,6 @@
                             <thead>
                                 <tr>
                                     <th>{{ knp_pagination_sortable(pagination, 'notice_title'|trans, 'notice_title') }}{% if sort == 'notice_title' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(pagination, 'notice_content'|trans, 'notice_content') }}{% if sort == 'notice_content' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(pagination, 'notice_published'|trans, 'notice_published') }}{% if sort == 'notice_published' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(pagination, 'createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(pagination, 'updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
@@ -51,8 +50,7 @@
                             {% for entity in pagination %}
                                 <tr class='clickableRow' href="{{ path('notice_show', { 'id': entity.id }) }}">
                                     <td>{% if entity.noticetitle %}{{ entity.noticetitle }}{% endif %}</td>
-                                    <td>{% if entity.noticecontent %}{{ entity.noticecontent }}{% endif %}</td>
-                                    <td>{% if entity.noticepublished %}{{ entity.noticepublished }}{% endif %}</td>
+                                    <td>{% if entity.noticepublished %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</td>
                                     <td>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

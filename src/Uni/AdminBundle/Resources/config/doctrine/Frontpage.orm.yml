@@ -29,6 +29,9 @@ Uni\AdminBundle\Entity\Frontpage:
         frontpage_vision:
             type: text
             nullable: true
+        frontpage_special:
+            type: text
+            nullable: true
         frontpage_active:
             type: boolean
             options:

@@ -7,6 +7,10 @@
     .header-image {
         background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
         background-repeat:no-repeat;
+        background-attachment: fixed;
+        background-position: center top;
+        background-size: auto;
+        background-clip: border-box;
     }
     </style>
 {% endblock %}
@@ -34,13 +38,16 @@
         <div class="container">
             <div class="row text-center">
                 {% for member in members %}
-                <div class="col-xs-4 col-lg-2">
-                    <div class="thumbnail borderless">
-                        <img class="img-rounded img-responsive" alt="{{ member.memberfirstname }}" src="{{ asset(member.webpath) | imagine_filter('page_member') }}">
-                        <div class="member-caption">
+                <div class="col-xs-12 col-sm-3 col-lg-2">
+                    <div class="thumbnail row-no-padding">
+                        <div class="member-photo col-xs-6 col-sm-12">
+                            <img class="img-rounded img-responsive" alt="{{ member.memberfirstname }}" src="{{ asset(member.webpath) | imagine_filter('page_member') }}">
+                        </div>
+                        <div class="member-caption col-xs-6 col-sm-12">
                             <h3>{{ member.memberfirstname ~ ' ' ~ member.memberlastname }}</h3>
                             <p>{% if member.memberrole %}{{ member.memberrole.rolename }}{% endif %}</p>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
                 {% endfor %}

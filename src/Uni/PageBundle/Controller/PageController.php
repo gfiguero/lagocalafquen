@@ -2,6 +2,7 @@
 
 namespace Uni\PageBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageController extends Controller
@@ -21,7 +22,13 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $frontpage = $em->getRepository('UniAdminBundle:Frontpage')->findOneBy(array('frontpage_active' => true), array('createdAt' => 'DESC'));
-        $members = $em->getRepository('UniAdminBundle:Member')->findBy(array('member_active' => true), array('member_admissiondate' => 'ASC'));
+        $members = $em->getRepository('UniAdminBundle:Member')
+            ->createQueryBuilder('m')
+            ->leftJoin('m.member_role', 'mr')
+            ->where('m.member_active = true')
+            ->orderBy('mr.role_rank', 'ASC')
+            ->getQuery()
+            ->getResult();
         return $this->render('UniPageBundle:Page:member.html.twig', array(
             'frontpage' => $frontpage,
             'members' => $members,
@@ -39,12 +46,27 @@ class PageController extends Controller
         ));
     }
 
-    public function noticeAction()
+    public function noticeAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $frontpage = $em->getRepository('UniAdminBundle:Frontpage')->findOneBy(array('frontpage_active' => true), array('createdAt' => 'DESC'));
+        $notices = $em->getRepository('UniAdminBundle:Notice')->findBy(array('notice_published' => true), array('createdAt' => 'DESC'));
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($notices, $request->query->getInt('page', 1), 10);
         return $this->render('UniPageBundle:Page:notice.html.twig', array(
-            'frontpage' => $frontpage
+            'frontpage' => $frontpage,
+            'notices' => $pagination,
+        ));
+    }
+
+    public function noticeshowAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $frontpage = $em->getRepository('UniAdminBundle:Frontpage')->findOneBy(array('frontpage_active' => true), array('createdAt' => 'DESC'));
+        $notice = $em->getRepository('UniAdminBundle:Notice')->find($id);
+        return $this->render('UniPageBundle:Page:noticeshow.html.twig', array(
+            'frontpage' => $frontpage,
+            'notice' => $notice,
         ));
     }
 

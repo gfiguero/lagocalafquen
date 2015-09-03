@@ -7,6 +7,10 @@
     .header-image {
         background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
         background-repeat:no-repeat;
+        background-attachment: fixed;
+        background-position: center top;
+        background-size: auto;
+        background-clip: border-box;
     }
     </style>
 {% endblock %}
@@ -19,6 +23,7 @@
                     <div class="site-heading">
                         <h1>{{ "report_index"|trans }}</h1>
                         <hr class="small">
+                        <span class="subheading">{{ frontpage.frontpagetitle }}</span>
                     </div>
                 </div>
             </div>

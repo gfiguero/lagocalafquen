@@ -276,4 +276,48 @@ class Service
     {
         return $this->deletedAt;
     }
+
+    public function upload()
+    {
+        if (null === $this->getServicePhotoFile()) {
+            return;
+        }
+
+        $this->getServicePhotoFile()->move(
+            $this->getUploadRootDir(),
+            $this->getServicePhotoFile()->getClientOriginalName()
+        );
+
+        $this->service_photo_path = $this->getServicePhotoFile()->getClientOriginalName();
+
+        $this->service_photo_file = null;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->service_photo_path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->service_photo_path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->service_photo_path
+            ? 'default'
+            : $this->getUploadDir().'/'.$this->service_photo_path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return '/uploads/service';
+    }
 }

@@ -7,11 +7,12 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: es
 
 framework:
     #esi:             ~
-    translator:      { fallbacks: [en] }
+    translator:      { fallbacks: [es] }
+    default_locale: es
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -113,7 +114,8 @@ assetic:
         uniPage_css:
             inputs:
                 - %kernel.root_dir%/Resources/less/uniPage.less
-                - %kernel.root_dir%/../git_components/startbootstrap-clean-blog/less/clean-blog.less
+                - %kernel.root_dir%/Resources/less/clean-blog/clean-blog.less
+                #- %kernel.root_dir%/../git_components/startbootstrap-clean-blog/less/clean-blog.less
             filters:
                 - less
                 - cssrewrite
@@ -256,3 +258,30 @@ knp_paginator:
         #pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
         pagination: :Pagination:pagination.html.twig
+
+stfalcon_tinymce:
+    selector: ".tinymce"
+    # Get current language from the parameters.ini
+    language: %locale%
+    # Custom buttons
+    theme:
+        # Simple theme: same as default theme
+        simple: ~
+        # Advanced theme with almost all enabled plugins
+        advanced:
+            plugins:
+                - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
+                - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                - "insertdatetime media nonbreaking save table contextmenu directionality"
+                - "emoticons template paste textcolor"
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example"
+            image_advtab: true
+            templates:
+                - {title: 'Test template 1', content: 'Test 1'}
+                - {title: 'Test template 2', content: 'Test 2'}
+        # BBCode tag compatible theme (see http://www.bbcode.org/reference.php)
+        bbcode:
+            plugins: ["bbcode, code, link, preview"]
+            menubar: false
+            toolbar1: "bold,italic,underline,undo,redo,link,unlink,removeformat,cleanup,code,preview"
