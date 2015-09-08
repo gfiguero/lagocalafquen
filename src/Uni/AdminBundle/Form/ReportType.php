@@ -20,9 +20,22 @@ class ReportType extends AbstractType
             ))
             ->add('report_content', null, array(
                 'label' =>  'report_content',
+                'required' => false,
+                'attr'  =>  array(
+                    'class' =>  'tinymce',
+                    'data-theme' => 'advanced',
+                ),
             ))
             ->add('report_published', null, array(
                 'label' =>  'report_published',
+                'required' => false,
+                'attr' => array(
+                    'labeled' => true,
+                ),
+            ))
+            ->add('report_photo_file', 'file', array(
+                'label' =>  'report_photo_file',
+                'required' => false,
             ))
         ;
     }

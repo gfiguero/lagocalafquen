@@ -3,6 +3,7 @@
 namespace Uni\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * Service
@@ -283,12 +284,16 @@ class Service
             return;
         }
 
+        $generator = new SecureRandom();
+        $random = $generator->nextBytes(10);
+        $prefix = md5($random);
+
         $this->getServicePhotoFile()->move(
             $this->getUploadRootDir(),
-            $this->getServicePhotoFile()->getClientOriginalName()
+            $prefix.'_'.$this->getServicePhotoFile()->getClientOriginalName()
         );
 
-        $this->service_photo_path = $this->getServicePhotoFile()->getClientOriginalName();
+        $this->service_photo_path = $prefix.'_'.$this->getServicePhotoFile()->getClientOriginalName();
 
         $this->service_photo_file = null;
     }

@@ -3,6 +3,7 @@
 namespace Uni\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * History

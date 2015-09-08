@@ -37,6 +37,11 @@ class Frontpage
     /**
      * @var string
      */
+    private $frontpage_address;
+
+    /**
+     * @var string
+     */
     private $frontpage_mission;
 
     /**
@@ -182,6 +187,29 @@ class Frontpage
     public function getFrontpagePhonenumber()
     {
         return $this->frontpage_phonenumber;
+    }
+
+    /**
+     * Set frontpage_phonenumber
+     *
+     * @param string $frontpagePhonenumber
+     * @return Frontpage
+     */
+    public function setFrontpageAddress($frontpageAddress)
+    {
+        $this->frontpage_address = $frontpageAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get frontpage_address
+     *
+     * @return string 
+     */
+    public function getFrontpageAddress()
+    {
+        return $this->frontpage_address;
     }
 
     /**

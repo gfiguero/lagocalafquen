@@ -23,6 +23,10 @@ Uni\AdminBundle\Entity\Frontpage:
             type: string
             length: '100'
             nullable: true
+        frontpage_address:
+            type: string
+            length: '300'
+            nullable: true
         frontpage_mission:
             type: text
             nullable: true

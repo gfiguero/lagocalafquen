@@ -43,6 +43,7 @@
                             <dt>{{ 'frontpage_subtitle'|trans }}</dt><dd>{% if entity.frontpagesubtitle %}{{ entity.frontpagesubtitle }}{% endif %}</dd>
                             <dt>{{ 'frontpage_email'|trans }}</dt><dd>{% if entity.frontpageemail %}{{ entity.frontpageemail }}{% endif %}</dd>
                             <dt>{{ 'frontpage_phonenumber'|trans }}</dt><dd>{% if entity.frontpagephonenumber %}{{ entity.frontpagephonenumber }}{% endif %}</dd>
+                            <dt>{{ 'frontpage_address'|trans }}</dt><dd>{% if entity.frontpageaddress %}{{ entity.frontpageaddress }}{% endif %}</dd>
                             <dt>{{ 'frontpage_mission'|trans }}</dt><dd>{% if entity.frontpagemission %}{{ entity.frontpagemission|raw }}{% endif %}</dd>
                             <dt>{{ 'frontpage_vision'|trans }}</dt><dd>{% if entity.frontpagevision %}{{ entity.frontpagevision|raw }}{% endif %}</dd>
                             <dt>{{ 'frontpage_special'|trans }}</dt><dd>{% if entity.frontpagespecial %}{{ entity.frontpagespecial|raw }}{% endif %}</dd>
@@ -55,8 +56,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         {% for photo in entity.frontpagephotos %}
-                            {% set image = 'uploads/frontpage_photos/' ~ photo.photopath %}
-                            <img src="{{ asset(image) | imagine_filter('frontpage_edit') }}" alt="..." class="img-responsive img-thumbnail">
+                            <img src="{{ asset(photo.webpath) | imagine_filter('admin_frontpage') }}" alt="..." class="img-responsive img-thumbnail">
                         {% endfor %}
                     </div>
                 </div>

@@ -13,7 +13,7 @@ uni_page_history:
 uni_page_notice:
     path:   /notice
     defaults: { _controller: UniPageBundle:Page:notice }
-    methods: [GET]
+    methods: [GET, POST]
 
 uni_page_notice_show:
     path:     /{id}/noticeshow
@@ -23,7 +23,15 @@ uni_page_report:
     path:   /report
     defaults: { _controller: UniPageBundle:Page:report }
 
+uni_page_report_show:
+    path:     /{id}/reportshow
+    defaults: { _controller: "UniPageBundle:Page:reportshow" }
+
 uni_page_role:
     path:   /role
     defaults: { _controller: UniPageBundle:Page:role }
+
+uni_page_publication:
+    path:   /publication
+    defaults: { _controller: UniPageBundle:Page:publication }
 

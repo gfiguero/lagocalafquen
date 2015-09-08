@@ -1,19 +1,8 @@
 {% extends ':Page:base.html.twig' %}
 
-{% block stylesheet %}
-    {% set foto = random(frontpage.frontpagephotos) %}
-    {% set image = '/uploads/frontpage_photos/' ~ foto.photopath %}
-    <style type="text/css">
-    .header-image {
-        background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
-        background-repeat:no-repeat;
-        background-attachment: fixed;
-        background-position: center top;
-        background-size: auto;
-        background-clip: border-box;
-    }
-    </style>
-{% endblock %}
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
 
 {% block header %}
     <header class="intro-header header-image">

@@ -1,0 +1,23 @@
+Uni\AdminBundle\Entity\ProductPhoto:
+    type: entity
+    table: ProductPhoto
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        photo_path:
+            type: string
+            length: '300'
+            nullable: true
+        photo_file:
+            type: string
+            length: '300'
+            nullable: true
+    manyToOne:
+        photo_product:
+            targetEntity: product
+            inversedBy: product_photos
+    lifecycleCallbacks: {  }

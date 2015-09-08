@@ -41,6 +41,16 @@ class NoticeType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ))
+            ->add('notice_photos', 'bootstrap_collection', array(
+                'label'                 =>  'notice_photos',
+                'type'                  =>  new NoticePhotoType(),
+                'allow_add'             =>  true,
+                'allow_delete'          =>  true,
+                'add_button_text'       =>  'notice_photo_add',
+                'delete_button_text'    =>  'notice_photo_delete',
+                'sub_widget_col'        =>  10,
+                'button_col'            =>  2
+            ))
         ;
     }
     

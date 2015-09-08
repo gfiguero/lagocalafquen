@@ -1,3 +1,11 @@
+.serif() {
+    font-family: 'Lora', 'Times New Roman', serif;
+}
+
+.sans-serif () {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .img-centered {
     margin: 0 auto;
 }
@@ -74,8 +82,9 @@ body {
 // Member Section
 
 .member-caption{
-    min-height: 92px;
+    height: 92px;
     font-family: @font-family-base;
+    overflow: hidden;
     h3 {
         font-size: 16px;
         text-transform: none;
@@ -94,3 +103,71 @@ body {
         margin-bottom: 10px;
     }
 }
+
+// Notice Section
+
+.notice-preview {
+    .sans-serif;
+    position: relative;
+    font-size: 20px;
+    height: 250px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    .notice-title {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 30px;
+        margin-top: 0;
+        text-align: justify;
+    }
+    .notice-createdat{
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 30px;
+        color: @gray-light;
+    }
+    .notice-content{
+        .serif;
+        font-size: 16px;
+        position: relative;
+        overflow: hidden;
+        text-align: justify;
+    }
+    &::after{
+        position: absolute;
+        bottom: 0;
+        display: block;
+        height: 100%;
+        width: 100%;
+        content: "";
+        background: linear-gradient(to top,
+            rgba(255,255,255, 1) 0%,
+            rgba(255,255,255, 0) 40%
+        );
+        pointer-events: none; /* so the text is still selectable */
+    }
+}
+.onotice-title{
+    .sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 800;
+}
+.report-preview {
+    .sans-serif;
+    overflow: hidden;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.report-title{
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+@border-radius-base:        0px;
+@border-radius-large:       0px;
+@border-radius-small:       0px;

@@ -47,6 +47,13 @@
                         </dl>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% for photo in entity.noticephotos %}
+                            <img src="{{ asset(photo.webpath) | imagine_filter('admin_notice') }}" alt="..." class="img-responsive img-thumbnail">
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             <!-- /.col-lg-12 -->
         </div>

@@ -3,6 +3,7 @@
 namespace Uni\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * Member
@@ -395,12 +396,16 @@ class Member
             return;
         }
 
+        $generator = new SecureRandom();
+        $random = $generator->nextBytes(10);
+        $prefix = md5($random);
+
         $this->getMemberPhotoFile()->move(
             $this->getUploadRootDir(),
-            $this->getMemberPhotoFile()->getClientOriginalName()
+            $prefix.'_'.$this->getMemberPhotoFile()->getClientOriginalName()
         );
 
-        $this->member_photo_path = $this->getMemberPhotoFile()->getClientOriginalName();
+        $this->member_photo_path = $prefix.'_'.$this->getMemberPhotoFile()->getClientOriginalName();
 
         $this->member_photo_file = null;
     }

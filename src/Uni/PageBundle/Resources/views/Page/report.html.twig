@@ -1,19 +1,8 @@
 {% extends ':Page:base.html.twig' %}
 
-{% block stylesheet %}
-    {% set foto = random(frontpage.frontpagephotos) %}
-    {% set image = '/uploads/frontpage_photos/' ~ foto.photopath %}
-    <style type="text/css">
-    .header-image {
-        background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
-        background-repeat:no-repeat;
-        background-attachment: fixed;
-        background-position: center top;
-        background-size: auto;
-        background-clip: border-box;
-    }
-    </style>
-{% endblock %}
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
 
 {% block header %}
     <header class="intro-header header-image">
@@ -33,4 +22,27 @@
 
 {% block javascript %}{% endblock %}
 
-{% block body -%}{% endblock %}
+{% block body -%}
+    <section id="report">
+        <div class="container">
+            <div class="row">
+                {% for report in reports %}
+                    <a href="{{ path('uni_page_report_show', { 'id': report.id }) }}">
+                        <div class="col-xs-12">
+                            <div class="report-preview">
+                                <div class="report-title">{{ report.reporttitle }}</div>
+                                {#}<div class="report-createdat">{{ report.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}</div>{#}
+                                {#}<div class="report-content">{{ report.reportcontent | striptags | slice(0, 700) | raw }}</div>{#}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    {{ knp_pagination_render(reports) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

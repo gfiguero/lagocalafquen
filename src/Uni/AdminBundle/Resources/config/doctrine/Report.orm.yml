@@ -18,6 +18,14 @@ Uni\AdminBundle\Entity\Report:
             type: boolean
             options:
                 default: false
+        report_photo_path:
+            type: string
+            length: '300'
+            nullable: true
+        report_photo_file:
+            type: string
+            length: '300'
+            nullable: true
         createdAt:
             type: datetime
             gedmo:
@@ -31,11 +39,6 @@ Uni\AdminBundle\Entity\Report:
         deletedAt:
             type: datetime
             nullable: true
-    oneToMany:
-        report_photos:
-            targetEntity: ReportPhoto
-            cascade: [persist]
-            mappedBy: photo_report
     gedmo:
         soft_deleteable:
             field_name: deletedAt

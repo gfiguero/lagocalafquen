@@ -7,8 +7,8 @@
         {% set path = form.children['photo_path'] %}
         {% set file = form.children['photo_file'] %}
         {% if path.vars.attr.preview is defined and path.vars.attr.preview == true and path.vars.value != '' %}
-            {% set image = 'uploads/frontpage_photos/' ~ path.vars.value %}
-            <img src="{{ asset(image) | imagine_filter('frontpage_edit') }}" alt="..." class="img-responsive img-thumbnail">
+            {% set image = 'uploads/frontpage/' ~ path.vars.value %}
+            <img src="{{ asset(image) | imagine_filter('admin_frontpage') }}" alt="..." class="img-responsive img-thumbnail">
             {{ form_widget(path) }}
             {{ form_errors(path) }}
         {% else %}
@@ -17,6 +17,38 @@
         {% endif %}
     {% endspaceless %}
 {% endblock uni_adminbundle_frontpagephoto_widget %}
+
+{% block uni_adminbundle_noticephoto_widget %}
+    {% spaceless %}
+        {% set path = form.children['photo_path'] %}
+        {% set file = form.children['photo_file'] %}
+        {% if path.vars.attr.preview is defined and path.vars.attr.preview == true and path.vars.value != '' %}
+            {% set image = 'uploads/notice/' ~ path.vars.value %}
+            <img src="{{ asset(image) | imagine_filter('admin_notice') }}" alt="..." class="img-responsive img-thumbnail">
+            {{ form_widget(path) }}
+            {{ form_errors(path) }}
+        {% else %}
+            {{ form_widget(file) }}
+            {{ form_errors(file) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock uni_adminbundle_noticephoto_widget %}
+
+{% block uni_adminbundle_productphoto_widget %}
+    {% spaceless %}
+        {% set path = form.children['photo_path'] %}
+        {% set file = form.children['photo_file'] %}
+        {% if path.vars.attr.preview is defined and path.vars.attr.preview == true and path.vars.value != '' %}
+            {% set image = 'uploads/product/' ~ path.vars.value %}
+            <img src="{{ asset(image) | imagine_filter('admin_product') }}" alt="..." class="img-responsive img-thumbnail">
+            {{ form_widget(path) }}
+            {{ form_errors(path) }}
+        {% else %}
+            {{ form_widget(file) }}
+            {{ form_errors(file) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock uni_adminbundle_productphoto_widget %}
 
 {# Widgets #}
 

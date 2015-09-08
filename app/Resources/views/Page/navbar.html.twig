@@ -15,10 +15,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('uni_page_member') }}">{{ "member_index"|trans }}</a></li>
+                <li><a href="{{ path('uni_page_notice') }}">{{ icon('newspaper-o fa-lg fa-fw') }}&nbsp;{{ "notice_index"|trans }}</a></li>
+                <li><a href="{{ path('uni_page_report') }}">{{ icon('info-circle fa-lg fa-fw') }}&nbsp;{{ "report_index"|trans }}</a></li>
+                <li><a href="{{ path('uni_page_publication') }}">{{ icon('bullhorn fa-lg fa-fw') }}&nbsp;{{ "publication_index"|trans }}</a></li>
+                <li><a href="{{ path('uni_page_member') }}">{{ icon('sitemap fa-lg fa-fw') }}&nbsp;{{ "member_index"|trans }}</a></li>
                 {#<li><a href="{{ path('uni_page_history') }}">{{ "history_index"|trans }}</a></li>#}
-                <li><a href="{{ path('uni_page_notice') }}">{{ "notice_index"|trans }}</a></li>
-                <li><a href="{{ path('uni_page_report') }}">{{ "report_index"|trans }}</a></li>
                 {#<li><a href="{{ path('uni_page_role') }}">{{ "role_index"|trans }}</a></li>#}
                 {#<li><a href="{{ path('uni_admin') }}">{{ "login"|trans }}</a></li>#}
             </ul>

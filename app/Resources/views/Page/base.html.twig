@@ -36,11 +36,12 @@
 
     {% block body %}{% endblock %}
 
-    {% include ':Page:footer.html.twig' %}
+    {% block footer %}{% endblock %}
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/uniPage.js') }}"></script>
+    <script src="{{ asset('js/uniPage-main.js') }}"></script>
     {% block javascript %}{% endblock %}
 
 </body>

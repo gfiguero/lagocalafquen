@@ -1,0 +1,55 @@
+Uni\AdminBundle\Entity\Product:
+    type: entity
+    table: Product
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        product_name:
+            type: string
+            length: '200'
+        product_content:
+            type: text
+            nullable: true
+        product_active:
+            type: boolean
+            options:
+                default: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    oneToMany:
+        product_photos:
+            targetEntity: ProductPhoto
+            cascade: [persist]
+            mappedBy: photo_product
+    manyToMany:
+        product_productcategory:
+            targetEntity: ProductCategory
+            inversedBy: productcategory_product
+            joinTable:
+                name: ProductCategoryNub
+                joinColumns:
+                    productcategory:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product:
+                        referencedColumnName: id
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

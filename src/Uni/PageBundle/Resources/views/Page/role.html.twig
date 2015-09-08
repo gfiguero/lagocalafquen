@@ -1,15 +1,8 @@
 {% extends ':Page:base.html.twig' %}
 
-{% block stylesheet %}
-    {% set foto = random(frontpage.frontpagephotos) %}
-    {% set image = '/uploads/frontpage_photos/' ~ foto.photopath %}
-    <style type="text/css">
-    .header-image {
-        background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(image) | imagine_filter('page_header') }}');
-        background-repeat:no-repeat;
-    }
-    </style>
-{% endblock %}
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}
+
+{% block stylesheet %}{{ parent() }}{% endblock %}
 
 {% block header %}
     <header class="intro-header header-image">
@@ -19,6 +12,7 @@
                     <div class="site-heading">
                         <h1>{{ "role_index"|trans }}</h1>
                         <hr class="small">
+                        <span class="subheading">{{ frontpage.frontpagetitle }}</span>
                     </div>
                 </div>
             </div>

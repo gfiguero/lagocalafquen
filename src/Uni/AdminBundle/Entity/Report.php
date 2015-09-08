@@ -3,6 +3,7 @@
 namespace Uni\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * Report
@@ -30,6 +31,16 @@ class Report
     private $report_published;
 
     /**
+     * @var string
+     */
+    private $report_photo_path;
+
+    /**
+     * @var string
+     */
+    private $report_photo_file;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -43,11 +54,6 @@ class Report
      * @var \DateTime
      */
     private $deletedAt;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $report_photos;
 
     /**
      * Constructor
@@ -137,6 +143,52 @@ class Report
     }
 
     /**
+     * Set report_photo_path
+     *
+     * @param string $reportPhotoPath
+     * @return Member
+     */
+    public function setReportPhotoPath($reportPhotoPath)
+    {
+        $this->report_photo_path = $reportPhotoPath;
+
+        return $this;
+    }
+
+    /**
+     * Get report_photo_path
+     *
+     * @return string 
+     */
+    public function getMemberPhotoPath()
+    {
+        return $this->report_photo_path;
+    }
+
+    /**
+     * Set report_photo_file
+     *
+     * @param string $reportPhotoFile
+     * @return Member
+     */
+    public function setReportPhotoFile($reportPhotoFile)
+    {
+        $this->report_photo_file = $reportPhotoFile;
+
+        return $this;
+    }
+
+    /**
+     * Get report_photo_file
+     *
+     * @return string 
+     */
+    public function getReportPhotoFile()
+    {
+        return $this->report_photo_file;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -205,36 +257,51 @@ class Report
         return $this->deletedAt;
     }
 
-    /**
-     * Add report_photos
-     *
-     * @param \Uni\AdminBundle\Entity\ReportPhoto $reportPhotos
-     * @return Report
-     */
-    public function addReportPhoto(\Uni\AdminBundle\Entity\ReportPhoto $reportPhotos)
+    public function upload()
     {
-        $this->report_photos[] = $reportPhotos;
+        if (null === $this->getReportPhotoFile()) {
+            return;
+        }
 
-        return $this;
+        $generator = new SecureRandom();
+        $random = $generator->nextBytes(10);
+        $prefix = md5($random);
+
+        $this->getReportPhotoFile()->move(
+            $this->getUploadRootDir(),
+            $prefix.'_'.$this->getReportPhotoFile()->getClientOriginalName()
+        );
+
+        $this->report_photo_path = $prefix.'_'.$this->getReportPhotoFile()->getClientOriginalName();
+
+        $this->report_photo_file = null;
     }
 
-    /**
-     * Remove report_photos
-     *
-     * @param \Uni\AdminBundle\Entity\ReportPhoto $reportPhotos
-     */
-    public function removeReportPhoto(\Uni\AdminBundle\Entity\ReportPhoto $reportPhotos)
+    public function getAbsolutePath()
     {
-        $this->report_photos->removeElement($reportPhotos);
+        return null === $this->report_photo_path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->report_photo_path;
     }
 
-    /**
-     * Get report_photos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getReportPhotos()
+    public function getWebPath()
     {
-        return $this->report_photos;
+        return null === $this->report_photo_path
+            ? 'default'
+            : $this->getUploadDir().'/'.$this->report_photo_path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return '/uploads/report';
     }
 }

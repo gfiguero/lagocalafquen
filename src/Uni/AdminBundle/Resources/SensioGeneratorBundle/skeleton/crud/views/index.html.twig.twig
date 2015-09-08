@@ -3,7 +3,7 @@
 {% endblock extends %}
 
 {% block body %}
-{{ "{% block title %}" }}{{ "{{ '" ~ route_name_prefix ~ "_index'|trans }}" }}{{ "{% endblock %}" }}
+{{ "{% block title %}" }}{{ "{{ app.request.attributes.get('_route')|trans }}" }}{{ "{% endblock %}" }}
 
 {{ "{% block body -%}" }}
 

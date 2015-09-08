@@ -30,6 +30,10 @@ class FrontpageType extends AbstractType
                 'label' =>  'frontpage_phonenumber',
                 'required' => false,
             ))
+            ->add('frontpage_address', 'text', array(
+                'label' =>  'frontpage_address',
+                'required' => false,
+            ))
             ->add('frontpage_mission', 'textarea', array(
                 'label' =>  'frontpage_mission',
                 'required' => false,

@@ -4,6 +4,7 @@ namespace Uni\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Uni\AdminBundle\Entity\Notice;
 use Uni\AdminBundle\Form\NoticeType;
@@ -47,6 +48,12 @@ class NoticeController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $photos = $entity->getNoticePhotos();
+            foreach ($photos as $photo) {
+                $photo->upload();
+                $photo->setPhotoNotice($entity);
+                $em->persist($photo);
+            }
             $em->persist($entity);
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'Notice has been created.' );    
@@ -173,10 +180,27 @@ class NoticeController extends Controller
             throw $this->createNotFoundException('The Notice cannot be found.');
         }
 
+        $currentPhotos = new ArrayCollection();
+        foreach ($entity->getNoticePhotos() as $photo) {
+            $currentPhotos->add($photo);
+        }
+
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            foreach ($currentPhotos as $photo) {
+                if (false === $entity->getNoticePhotos()->contains($photo)) {
+                    $em->remove($photo);
+                }
+            }
+            $photos = $entity->getNoticePhotos();
+            foreach ($photos as $photo) {
+                $photo->upload();
+                $photo->setPhotoNotice($entity);
+                $em->persist($photo);
+            }
+            $em->persist($entity);
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'Notice has been updated.' );
             return $this->redirect($this->generateUrl('notice'));

@@ -30,6 +30,7 @@ frontpage_title: Título de la portada
 frontpage_subtitle: Subtítulo
 frontpage_email: Email de contacto
 frontpage_phonenumber: Teléfono de contacto
+frontpage_address: Dirección
 frontpage_mission: Misión
 frontpage_vision: Visión
 frontpage_special: Mesaje GC
@@ -55,6 +56,7 @@ member_phonenumber: Teléfono
 member_birthdate: Fecha Nacimiento
 member_admissiondate: Fecha Ingreso
 member_active: Activo
+member_control: Organización
 member_photo_file: Foto Perfil
 member_photo_path: Directorio
 member_role: Cargo Asignado
@@ -84,6 +86,7 @@ user_show: Ver Usuario
 user_edit: Editar Usuario
 user_firstname: Nombre
 user_lastname: Apellido
+user_phonenumber: Teléfono
 User has been created.: El usuario ha sido creado.
 User has been updated.: El usuario ha sido actualizado.
 User has been deleted.: El usuario ha sido borrado.
@@ -100,9 +103,15 @@ notice_show: Ver Noticia
 notice_edit: Editar Noticia
 notice_title: Título
 notice_content: Contenido
+notice_control: Control de noticias
 notice_published: Publicada
 notice_photos: Fotos
 notice_noticecategory: Categoría
+notice_noticecategory_filter: Seleccione categoría
+notice_noticecategory_submit: Filtrar
+notice_photos: Fotos de noticia
+notice_photo_add: Agregar foto de noticia
+notice_photo_delete: Borrar foto de noticia
 Notice has been created.: La noticia ha sido creada.
 Notice has been updated.: La noticia ha sido actualizada.
 Notice has been deleted.: La noticia ha sido borrada.
@@ -117,6 +126,39 @@ noticecategory_name: Nombre
 NoticeCategory has been created.: La categoría de noticias ha sido creada.
 NoticeCategory has been updated.: La categoría de noticias ha sido actualizada.
 NoticeCategory has been deleted.: La categoría de noticias ha sido borrada.
+
+# Product
+product: Producto
+products: Productos
+product_index: Productos
+product_new: Nuevo Producto
+product_show: Ver Producto
+product_edit: Editar Producto
+product_name: Nombre
+product_content: Contenido
+product_control: Control de productos
+product_active: Activo
+product_photos: Fotos
+product_productcategory: Categoría
+product_productcategory_filter: Seleccione categoría
+product_productcategory_submit: Filtrar
+product_photos: Fotos de product
+product_photo_add: Agregar foto de producto
+product_photo_delete: Borrar foto de producto
+Product has been created.: El producto ha sido creado.
+Product has been updated.: El producto ha sido actualizado.
+Product has been deleted.: El producto ha sido borrado.
+
+# ProductCategory
+productcategory: Categoría de productos
+productcategory_index: Categorías de productos
+productcategory_new: Nueva Categoría
+productcategory_show: Ver Categoría
+productcategory_edit: Editar Categoría
+productcategory_name: Nombre
+ProductCategory has been created.: La categoría de productos ha sido creada.
+ProductCategory has been updated.: La categoría de productos ha sido actualizada.
+ProductCategory has been deleted.: La categoría de productos ha sido borrada.
 
 # History
 history: Historia
@@ -151,16 +193,33 @@ Service has been updated.: El servicio ha sido actualizado.
 Service has been deleted.: El servicio ha sido borrado.
 
 # Reports
-report: Publicaciones
-report_index: Publicaciones
-report_new: Nueva Publicación
-report_show: Ver Publicación
-report_edit: Editar Publicación
+report: Informes
+report_index: Informes
+report_new: Nuevo Informe
+report_show: Ver Informe
+report_edit: Editar Informe
 report_title: Título
 report_content: Contenido
 report_published: Publicado
-report_photo: Foto
-Reports has been created.: La publicación ha sido creada.
-Reports has been updated.: La publicación ha sido actualizada.
-Reports has been deleted.: La publicación ha sido borrada.
+report_photo_file: Archivo
+Report has been created.: El informe ha sido creado.
+Report has been updated.: El informe ha sido actualizado.
+Report has been deleted.: El informe ha sido borrado.
+
+# Publication
+publication: Publicación
+publications: Publicaciones
+publication_index: Publicaciones
+publication_new: Nueva Publicación
+publication_show: Ver Publicación
+publication_edit: Editar Publicación
+publication_title: Título
+publication_content: Contenido
+publication_rank: Orden
+publication_active: Activa
+publication_photo_file: Foto
+publication_photo_path: Directorio
+Publication has been created.: La publicación ha sido creada.
+Publication has been updated.: La publicación ha sido actualizada.
+Publication has been deleted.: La publicación ha sido borrada.
 

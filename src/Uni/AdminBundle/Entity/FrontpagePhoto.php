@@ -3,6 +3,7 @@
 namespace Uni\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * FrontpagePhoto
@@ -115,12 +116,16 @@ class FrontpagePhoto
             return;
         }
 
+        $generator = new SecureRandom();
+        $random = $generator->nextBytes(10);
+        $prefix = md5($random);
+
         $this->getPhotoFile()->move(
             $this->getUploadRootDir(),
-            $this->getPhotoFile()->getClientOriginalName()
+            $prefix.'_'.$this->getPhotoFile()->getClientOriginalName()
         );
 
-        $this->photo_path = $this->getPhotoFile()->getClientOriginalName();
+        $this->photo_path = $prefix.'_'.$this->getPhotoFile()->getClientOriginalName();
 
         $this->photo_file = null;
     }
@@ -150,7 +155,7 @@ class FrontpagePhoto
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return '/uploads/frontpage_photos';
+        return '/uploads/frontpage';
     }
 
 }
